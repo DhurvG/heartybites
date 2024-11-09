@@ -1,70 +1,157 @@
-# Getting Started with Create React App
+# Hearty Bites
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack recipe sharing and management application built with React, Node.js, Express, and MongoDB.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Hearty Bites is a web application that allows users to discover, save, and manage recipes. Users can create accounts, browse recipes, save their favorites, add personal notes, and more.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- User authentication (signup/login)
+- Recipe browsing and searching
+- Save favorite recipes
+- Add personal notes to recipes
+- Profile management
+- Responsive design
+- Category-based recipe filtering
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+### Frontend
+- React.js
+- React Router DOM
+- Tailwind CSS
+- Lucide React (icons)
+- Axios
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT Authentication
+- bcryptjs for password hashing
+- CORS
 
-### `npm run build`
+## Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v14 or higher)
+- MongoDB
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install frontend dependencies
+npm install
+Install backend dependencies
+cd server
+npm install
 
-### `npm run eject`
+3. Create a `.env` file in the server directory with the following variables:
+env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Start the development servers:
+npm start (frontend)
+node src/server.js (backend)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
+hearty-bites/
+├── public/
+├── src/
+│ ├── components/
+│ │ └── ui/
+│ ├── models/
+│ ├── pages/
+│ ├── routes/
+│ ├── middleware/
+│ ├── App.js
+│ └── server.js
+└── package.json
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Additional Setup
 
-## Learn More
+1. Database Setup
+- The application will automatically create the required collections in MongoDB
+- Initial data will be seeded when the server starts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. API Keys
+- The application uses the free TheMealDB API, so no API key is required
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Common Issues
 
-### Code Splitting
+1. MongoDB Connection
+If you encounter MongoDB connection issues:
+- Ensure MongoDB is running locally
+- Check if the MONGO_URI in .env is correct
+- Verify MongoDB port (default: 27017)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Port Conflicts
+If port 3000 or 5000 is already in use:
+- Change the port in the respective .env files
+- Update the CORS configuration in server.js accordingly
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API Endpoints
 
-### Making a Progressive Web App
+### Authentication
+- `POST /api/auth/signup` - Register a new user
+- `POST /api/auth/login` - Login user
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Notes
+- `GET /api/notes/user` - Get all notes for current user
+- `GET /api/notes/:recipeId` - Get notes for specific recipe
+- `POST /api/notes` - Create/update a note
+- `DELETE /api/notes/:noteId` - Delete a note
 
-### Advanced Configuration
+### Recipes
+- `GET /api/recipes` - Get all recipes
+- `GET /api/recipes/:id` - Get specific recipe
+- `POST /api/recipes/save` - Save a recipe
+- `DELETE /api/recipes/save/:id` - Remove saved recipe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Profiles
+- `GET /api/profiles` - Get user profile
+- Protected routes require JWT token in Authorization header
 
-### Deployment
+## Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Frontend Dependencies
+json
+{
+"@radix-ui/react-dropdown-menu": "^2.1.2",
+"@radix-ui/react-select": "^2.1.2",
+"axios": "^1.7.7",
+"lucide-react": "^0.455.0",
+"react": "^18.3.1",
+"react-dom": "^18.3.1",
+"react-router-dom": "^6.28.0"
+}
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Backend Dependencies
+json
+{
+"bcryptjs": "^2.4.3",
+"cors": "^2.8.5",
+"dotenv": "^16.4.5",
+"express": "^4.21.1",
+"jsonwebtoken": "^9.0.2",
+"mongoose": "^8.8.1"
+
+
+## Development Dependencies
+json
+{
+"autoprefixer": "^10.4.20",
+"postcss": "^8.4.47",
+"tailwindcss": "^3.4.14"
+}
+
+## Acknowledgments
+
+- Recipe data provided by [TheMealDB API](https://www.themealdb.com/api.php)
+- Icons from [Lucide React](https://lucide.dev/)
