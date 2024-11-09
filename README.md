@@ -43,7 +43,7 @@ Hearty Bites is a web application that allows users to discover, save, and manag
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/JapitChhabra/heart-bites.git
+   git clone https://github.com/DhurvG/heartybites
    cd heart-bites
    ```
 
@@ -62,12 +62,6 @@ Hearty Bites is a web application that allows users to discover, save, and manag
 
 4. **Running the Project**:
 
-   - To start both frontend and backend simultaneously (recommended for development):
-     ```bash
-     npm run dev
-     ```
-     This command uses `concurrently` to run the frontend on port 5001 and the backend on port 5000.
-
    - To start only the frontend:
      ```bash
      npm start
@@ -78,8 +72,13 @@ Hearty Bites is a web application that allows users to discover, save, and manag
      npm run server
      ```
 
+   - To start both frontend and backend simultaneously (recommended for development):
+     ```bash
+     npm run dev
+     ```
+     This command uses `concurrently` to run the frontend on port 5001 and the backend on port 5000.
+
 ## Additional Setup
---
 
 1. **Database Setup**:
    - The application will automatically create the required collections in MongoDB.
