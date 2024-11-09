@@ -79,6 +79,7 @@ Hearty Bites is a web application that allows users to discover, save, and manag
      ```
 
 ## Additional Setup
+--
 
 1. **Database Setup**:
    - The application will automatically create the required collections in MongoDB.
